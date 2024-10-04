@@ -9,7 +9,7 @@ public class Producer implements Negotiator {
 		pCurve = new ProducerCurve(10, new Point(1, 10.0), 1, 1);
 	}
 	
-	public Point startBid()
+	public Point startPoint()
 	{
 		return pCurve.getPoint(0);
 	}
