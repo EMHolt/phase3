@@ -204,6 +204,16 @@ public abstract class AbstractCurve {
 		return qIndex;
 	}
 	
+	public int getSize()
+	{
+		return myCurve.size();
+	}
+	
+	public Point getPoint(int i)
+	{
+		return myCurve.get(i);
+	}
+	
 	/**
 	 * Forces extension programs to have a sort method.
 	 */
