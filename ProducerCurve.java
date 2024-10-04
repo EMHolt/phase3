@@ -7,6 +7,7 @@ package phase2;
  * Description: An extension of AbstractCurve. Defines the sort method.
  */
 
+// needs a start point method
 public class ProducerCurve extends AbstractCurve{
 	
 	/**
@@ -29,7 +30,7 @@ public class ProducerCurve extends AbstractCurve{
 	 */
 	public ProducerCurve(int n, Point startPoint, int deltaX, double deltaY)
 	{
-		super(n, startPoint, deltaX, deltaY);		
+		super(n, startPoint, deltaX, deltaY * -1);	
 	}
 	
 	/**
@@ -41,14 +42,20 @@ public class ProducerCurve extends AbstractCurve{
 		for(int i = 1; i < myCurve.size(); i++)
 		{
 			Point k = myCurve.get(i);
+			Point m = myCurve.get(i);
 			int j = i - 1;
-			
-			while(j >= 0 && myCurve.get(j).getQuantity() < k.getQuantity())
+			int q = myCurve.get(i).getQuantity();
+			while(j >= 0 && myCurve.get(j).getQuantity() > k.getQuantity())
 			{
-				myCurve.set(j + 1,  myCurve.get(j));
+				if(myCurve.get(j).getPrice() > k.getPrice())
+				{
+					m.setPrice(k.getPrice());
+				}
+				m.setQuantity(q);
+				myCurve.set(j + 1,  m); 
 				j = j - 1;
 			}
-			myCurve.set(j + 1,  k);
+			myCurve.set(j + 1,  m);
 		}
 	}
 }
